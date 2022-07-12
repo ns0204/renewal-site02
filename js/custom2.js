@@ -16,7 +16,6 @@ $(function(){
   });
 
   function activation(){
-    console.log(count % 2)
       if(count % 2){
         $(".logo, .navi").addClass("active");
       }else{
@@ -26,8 +25,8 @@ $(function(){
   }
 
   function doScroll(){
+    if($("html,body").is(":animated"))return false;
     var secTop = $("section").eq(count).offset().top;
-    console.log(secTop)
     $("html,body").stop().animate({"scrollTop":secTop},500)
     activation();
   }
@@ -36,7 +35,6 @@ $(function(){
   $("main").on("wheel",function(e){
     e.preventDefault();
     if($("html,body").is(":animated"))return false;
-    console.log(e)
     var deltaY = e.originalEvent.deltaY;
     if(deltaY < 0){//마우스를 위로 올렸을때
       count--;
@@ -49,4 +47,25 @@ $(function(){
       doScroll();
     }
   })
+
+
+  $(window).keydown(function(event){
+    if($("html,body").is(":animated"))return false;
+    if(event.keyCode == 38){
+      event.preventDefault();
+      count--;
+      if(count < 0) count = 0;
+        doScroll();
+    }else if(event.keyCode == 40){
+      event.preventDefault();
+      count++;
+      if(count >= $("section").length) count = $("section").length-1
+        doScroll();
+    }
+  });
+  
+  $('body').mousedown(function(e){
+    console.log(e.button)
+    if(e.button==1)return false
+  });
 });
