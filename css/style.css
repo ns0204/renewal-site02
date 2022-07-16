@@ -676,11 +676,11 @@ main > section{
 }
 
 #event .sec2{
-	width: 800px;
 	height: 850px;
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
+	z-index: 2;
 }
 
 #event .sec2 b{
@@ -827,11 +827,10 @@ main > section{
 	width: 1080px;
 	height: 40px;
 	background-color: #fff;
-	color: #fff;
+	color: #363636;
 	border: none;
 	outline: none;
 	font-family: 'old';
-	cursor: pointer;
 	text-indent: 20px;
 }
 
